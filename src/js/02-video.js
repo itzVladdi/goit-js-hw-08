@@ -1,5 +1,5 @@
 import Player from '@vimeo/player';
-const throttle = require('lodash.throttle');
+import throttle from 'lodash.throttle';
 
 const vimeoPlayer = new Player('vimeo-player');
 const key = 'videoplayer-current-time';
@@ -11,4 +11,6 @@ function onVimeoPlayerTimeupdate(data) {
 }
 
 vimeoPlayer.on('timeupdate', throttle(onVimeoPlayerTimeupdate, 1000));
-vimeoPlayer.setCurrentTime(savedTime);
+if (savedTime) {
+  vimeoPlayer.setCurrentTime(savedTime);
+}

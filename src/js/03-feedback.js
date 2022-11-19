@@ -1,4 +1,4 @@
-const throttle = require('lodash.throttle');
+import throttle from 'lodash.throttle';
 const formEl = document.querySelector('.feedback-form');
 let feedbackForm = {};
 const key = 'feedback-form-state';
@@ -26,6 +26,7 @@ function onSubmitBtn(event) {
   console.log(feedbackForm);
   localStorage.removeItem(key);
   target.reset();
+  feedbackForm = {};
 }
 
 formEl.addEventListener('input', throttle(onFormElInput, 500));
